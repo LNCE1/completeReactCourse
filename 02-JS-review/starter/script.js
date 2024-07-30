@@ -142,3 +142,23 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+//Example of how to extract information without and with destructuring
+const book = getBook(2);
+
+// //Get title and author from object book number 2
+// const title = book.title;
+// const author = book.author;
+
+//Destructuring last object example
+//const { title, author, genres } = book;
+// console.log(title, " - ", author); //Same result: The Cyberiad  -  Stanislaw Lem
+
+//Get genres from array
+// const primaryGenre = genres[0];
+// const secondaryGenre = genres[1];
+// console.log(primaryGenre, secondaryGenre); //science fiction humor
+
+//Destructuring last array example
+// const [primaryGenre, secondaryGenre] = genres;
+// console.log(primaryGenre, secondaryGenre); //science fiction humor
