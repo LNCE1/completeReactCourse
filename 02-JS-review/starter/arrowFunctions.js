@@ -168,10 +168,18 @@ const updatedBook = { ...book, moviePublicationDate: "2001-12-19", pages: 295 };
 const summary = `${title}, is a ${pages}-page long book, was written by ${author} and published in ${
   publicationDate.split("-")[0]
 }`;
-console.log(summary);
+//console.log(summary);
 
 //Ternary operator has 3 operands: condition, result in case of being true, result in case of being false
-const pagesRange = pages > 1000 ? "over a thousand" : "less than a thousand";
+//const pagesRange = pages > 1000 ? "over a thousand" : "less than a thousand";
 //console.log(`The book has ${pagesRange} pages`);
 
-//
+//Similar to the method used in line 169 we could write a function declaration and an arrow function to get the year as an example
+function getYear(str) {
+  //function declaration
+  return str.split("-")[0];
+}
+
+console.log(getYear(publicationDate));
+//Now with an arrow function we can make a one liner function:
+const arrowGetYear = (str) => str.split("-")[0]; //Storing the function value in the variable to become a function expression
