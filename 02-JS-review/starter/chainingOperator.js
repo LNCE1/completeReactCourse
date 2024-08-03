@@ -144,23 +144,14 @@ function getBook(id) {
 }
 
 //Example of how to extract information without and with destructuring
-const book = getBook(2);
+const book = getBook(3);
 
-const hasMovieAdaptation = book.hasMovieAdaptation;
-//Some logical operators like AND or OR have short circuiting under certain conditions, it means that the operator might return the first value without even looking at the second
-
-//AND operator, if first value true, returns second
-console.log(true && "has a movie"); //No short circuiting, first value true so returns the second one
-
-//AND operator, if first value false, returns first value doing short circuiting, meaning, without even looking the second value
-console.log(hasMovieAdaptation && "this book has a movie");
-
-//Falsy value:0, ' ', null, undefined
-console.log("Hallo" && "Hola");
-//Truthy value: everything else
-console.log(" " && "Swei");
-
-//OR operator, if first value is true it returns it,
-console.log(true || "Returns true");
-//OR operator, if first value is false it returns the second,
-console.log(false || "Returns second");
+//Chaining Operator to get both reviews in 1 number
+//What it actually does is to tell JS to keep asking for properties in case that what comes before it actually exists, in case of being undefined, it doesn't.
+//If we don't use it, in the following code with book number 2 works smoothly but with book number 3 since librarything doesn't exists it results in undefined and undefined.reviewsCount and on the following error: TypeError: Cannot read properties of undefined (reading 'reviewsCount')
+function getTotalReviewCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount ?? 0;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0; //? is the optional chaining and ?? is a default result of 0 in case of not being defined
+  return goodreads + librarything;
+}
+console.log(getTotalReviewCount(book));
