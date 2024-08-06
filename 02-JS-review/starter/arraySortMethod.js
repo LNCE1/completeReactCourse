@@ -6,7 +6,7 @@ const sorted = arr.slice().sort((a, b) => a - b);
 console.log(arr); //ORIGINAL:[ 3, 7, 1, 9, 6 ]
 console.log(sorted); //SORTED:[ 1, 3, 6, 7, 9 ]
 
-//EXERCISE: sort the book array by number of pages
+//Array of objects for the exercise
 const data = [
   {
     id: 1,
@@ -153,6 +153,7 @@ function getBook(id) {
 }
 const books = getBooks();
 
+//EXERCISE: sort the book array by number of pages
 const sortedByPages = books
   .slice()
   .sort((a, b) => a.pages - b.pages)

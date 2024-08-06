@@ -1,5 +1,6 @@
+//In react, many operations need to be immutable, meaning, where we do not manipulate the underlying data structure: how to add/delete/update elements to arrays, without mutating the original underlying one.
+//1) Add book object to array
 //Array of objects for the exercise
-//Arrow functions: argument => What we want to return
 const data = [
   {
     id: 1,
@@ -144,43 +145,24 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+const books = getBooks();
 
-//Example of how to extract information without and with destructuring
-const book = getBook(2);
+//Solution
+const newBook = {
+  id: 6,
+  title: "Harry Potter and the Chamber of Secrets",
+  author: "J. K. Rowling",
+};
 
-//Destructuring object example
-const { title, author, genres, pages, publicationDate } = book;
+const booksAfterAdd = [...books, newBook]; //Spread operator to add a new book and creating a copied array
+//console.log(booksAfterAdd);
 
-//Destructuring array example + the rest operator, it will give us the rest of genres with all the values we didn't previously destructured
-const [primaryGenre, secondaryGenre, ...otherGenres] = genres;
-// console.log(primaryGenre, secondaryGenre, otherGenres); //science fiction humor [ 'speculative fiction', 'short stories', 'fantasy' ]
+//2) Delete book object from array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3); //Filter all the books, except the 3rd
+//console.log(booksAfterDelete);
 
-//Spread Operator examples. Let's create a new array with all the old genres, but adding a new one
-//Spread operator takes all the values out of the genres array, and place them one by one on the new array
-const newGenres = [...genres, "epic fantasy"];
-// console.log(newGenres);
-
-//Spread operator, we can overwrite/update (example: pages) or add new properties (example movie-publication date)
-const updatedBook = { ...book, moviePublicationDate: "2001-12-19", pages: 295 };
-//console.log(updatedBook);
-
-//Template literals allows us to create strings that contains javascript variables/expressions inside
-//Example: Let's create a book summary of the current selection (2)
-const summary = `${title}, is a ${pages}-page long book, was written by ${author} and published in ${
-  publicationDate.split("-")[0]
-}`;
-//console.log(summary);
-
-//Ternary operator has 3 operands: condition, result in case of being true, result in case of being false
-//const pagesRange = pages > 1000 ? "over a thousand" : "less than a thousand";
-//console.log(`The book has ${pagesRange} pages`);
-
-//Similar to the method used in line 169 we could write a function declaration and an arrow function to get the year as an example
-function getYear(str) {
-  //function declaration
-  return str.split("-")[0];
-}
-
-console.log(getYear(publicationDate));
-//Now with an arrow function we can make a one liner function:
-const arrowGetYear = (str) => str.split("-")[0]; //Storing the function value in the variable to become a function expression
+//3)Update book object in the array with map array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+console.log(booksAfterUpdate);

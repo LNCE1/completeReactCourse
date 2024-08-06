@@ -2,6 +2,7 @@
 //Reduce method also takes in a callback function that will be executed for each element of the array and a second argument "starter value"
 //EXERCISE: Add up all the total pages
 //Map is a functional array method because it doesn't mutate the original mutate but do return a new array based on the original one.
+//Array of objects for the exercise
 const data = [
   {
     id: 1,

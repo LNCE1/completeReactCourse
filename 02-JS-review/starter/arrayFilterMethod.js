@@ -1,4 +1,4 @@
-//Map is a functional array method because it doesn't mutate the original mutate but do return a new array based on the original one.
+//Array of objects for the exercise
 const data = [
   {
     id: 1,
@@ -144,27 +144,10 @@ function getBook(id) {
   return data.find((d) => d.id === id);
 }
 
-//Map method will loop an array and return a new array with the same length with an operation applied to each element
-//Map expects a callback function (a function that will be call for each element). In the callback function, the element parameter will be the current element of the array.
-//EXAMPLE:
-// const x = [1, 2, 3, 4, 5].map((el) => el * 2);
-// console.log(x); //[ 2, 4, 6, 8, 10 ]
-
-//EXERCISE:
-//Array that contains only the titles of all the books.
 const books = getBooks();
-const allTitles = books.map((book) => book.title);
 
-//console.log(allTitles); //['The Lord of the Rings', 'The Cyberiad', 'Dune', "Harry Potter and the Philosopher's Stone",'A Game of Thrones']
-
-//Array that contains an object with essential data: Title and Author
-const essentialData = books.map((book) => ({
-  title: book.title,
-  author: book.author,
-}));
-//console.log(essentialData);
-
-//Array Filter Method, to filter elements from the array based on the conditions
+//Array Filter Method, to filter elements from the array based on the conditions.
+//Returns a new and shorter array
 //EXERCISE: filter books with 500 pages or more, and from the result, filter the ones that have movie adaptation
 const longBooksWithMovie = books
   .filter((book) => book.pages > 500)

@@ -1,4 +1,5 @@
 //Map is a functional array method because it doesn't mutate the original mutate but do return a new array based on the original one.
+//Array of objects for the exercise
 const data = [
   {
     id: 1,
